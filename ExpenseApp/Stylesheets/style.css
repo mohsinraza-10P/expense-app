@@ -1,0 +1,13 @@
+﻿listview {
+	margin: 16;
+}
+
+^label {
+	color: red;
+}
+
+.lbExpenseTitle {
+	font-size: 24;
+	font-style: bold;
+	color: pink;
+}

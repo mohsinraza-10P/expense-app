@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:ExpenseApp.ViewModels"
+    x:Class="ExpenseApp.Views.AddExpensePage"
+    Title="Add New Expense">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewmodels:AddExpenseVM
+                x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Save"
+            Command="{Binding Source={StaticResource vm}, Path=SaveExpenseCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Source={StaticResource vm}}"
+            Margin="16">
+            <Entry
+                Placeholder="Name"
+                Text="{Binding ExpenseName, Mode=TwoWay}" />
+            <Entry
+                Placeholder="Amount"
+                Keyboard="Numeric"
+                Text="{Binding ExpenseAmount, Mode=TwoWay}" />
+            <Editor
+                Placeholder="Description"
+                Text="{Binding ExpenseDescription, Mode=TwoWay}" />
+            <DatePicker
+                Date="{Binding ExpenseDate, Mode=TwoWay}" />
+            <Picker
+                SelectedItem="{Binding ExpenseCategory, Mode=TwoWay}"
+                ItemsSource="{Binding Categories}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
